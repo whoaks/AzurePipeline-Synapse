@@ -23,7 +23,7 @@
             "value": ["SQL_Latin1_General_CP1_CI_AS", "SQL_Latin1_General_CP1_CI_AS"]
         },
         "Synapse_SP_Name": {
-            "value": ["sparkpool1", "sparkpool2"]
+            "value": ["sparkpool1"]
         },
         "Synapse_SP_Tags": {
             "value": {
@@ -31,28 +31,28 @@
             }
         },
         "Synapse_SP_Node_Size": {
-            "value": ["Small", "Medium"]
+            "value": ["Small"]
         },
         "Synapse_SP_Node_Size_Family": {
-            "value": ["MemoryOptimized", "MemoryOptimized"]
+            "value": ["MemoryOptimized"]
         },
         "Synapse_SP_Version": {
-            "value": ["2.4", "2.4"]
+            "value": ["2.4"]
         },
         "Synapse_SP_AutoScale": {
-            "value": [true, true]
+            "value": [true]
         },
         "Synapse_SP_Min_Node": {
-            "value": [3, 3]
+            "value": [3]
         },
         "Synapse_SP_Max_Node": {
-            "value": [10, 10]
+            "value": [10]
         },
         "Synapse_SP_AutoPause": {
-            "value": [true, true]
+            "value": [true]
         },
         "Synapse_SP_Delay": {
-            "value": [15, 15]
+            "value": [15]
         }
     }
 }
