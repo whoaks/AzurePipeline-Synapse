@@ -1,0 +1,101 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "Synapse_WS_Name": {
+            "type": "string"
+        },
+        "SQL_Pool_Name": {
+            "type": "array"
+        },
+        "SQL_Pool_Tags": {
+            "type": "object"
+        },
+        "SQL_Pool_SKU_Name": {
+            "type": "array"
+        },
+        "SQL_Pool_Creation_Mode": {
+            "type": "array"
+        },
+        "SQL_Pool_Collation": {
+            "type": "array"
+        },
+        "Synapse_SP_Name": {
+            "type": "array"
+        },
+        "Synapse_SP_Tags": {
+            "type": "object"
+        },
+        "Synapse_SP_Node_Size": {
+            "type": "array"
+        },
+        "Synapse_SP_Node_Size_Family": {
+            "type": "array"
+        },
+        "Synapse_SP_Version": {
+            "type": "array"
+        },
+        "Synapse_SP_AutoScale": {
+            "type": "array"
+        },
+        "Synapse_SP_Min_Node": {
+            "type": "array"
+        },
+        "Synapse_SP_Max_Node": {
+            "type": "array"
+        },
+        "Synapse_SP_AutoPause": {
+            "type": "array"
+        },
+        "Synapse_SP_Delay": {
+            "type": "array"
+        }
+    },
+    "resources": [
+        {
+            "type"      : "Microsoft.Synapse/workspaces/sqlPools",
+            "apiVersion": "2020-12-01",
+            "name"      : "[concat(parameters('Synapse_WS_Name'), '/', parameters('SQL_Pool_Name')[copyIndex('PoolCopy')])]",
+            "location"  : "[resourceGroup().location]",
+            "tags"      : "[parameters('SQL_Pool_Tags')]",
+            "sku": {
+                "name": "[parameters('SQL_Pool_SKU_Name')[copyIndex('PoolCopy')]]"
+            },
+            "properties": {
+                "createMode": "[parameters('SQL_Pool_Creation_Mode')[copyIndex('PoolCopy')]]",
+                "collation" : "[parameters('SQL_Pool_Collation')[copyIndex('PoolCopy')]]"
+            },
+            "copy": {
+                "name" : "PoolCopy",
+                "count": "[length(parameters('SQL_Pool_Name'))]",
+                "mode" : "Serial"
+            }
+        },
+        {
+            "type"      : "Microsoft.Synapse/workspaces/bigDataPools",
+            "apiVersion": "2020-12-01",
+            "name"      : "[concat(parameters('Synapse_WS_Name'), '/', parameters('Synapse_SP_Name')[copyIndex('SynapseSPCopy')])]",
+            "location"  : "[resourceGroup().location]",
+            "tags"      : "[parameters('Synapse_SP_Tags')]",
+            "properties": {
+                "nodeSize"      : "[parameters('Synapse_SP_Node_Size')[copyIndex('SynapseSPCopy')]]",
+                "nodeSizeFamily": "[parameters('Synapse_SP_Node_Size_Family')[copyIndex('SynapseSPCopy')]]",
+                "sparkVersion"  : "[parameters('Synapse_SP_Version')[copyIndex('SynapseSPCopy')]]",
+                "autoScale": {
+                    "enabled"     : "[parameters('Synapse_SP_AutoScale')[copyIndex('SynapseSPCopy')]]",
+                    "minNodeCount": "[parameters('Synapse_SP_Min_Node')[copyIndex('SynapseSPCopy')]]",
+                    "maxNodeCount": "[parameters('Synapse_SP_Max_Node')[copyIndex('SynapseSPCopy')]]"
+                },
+                "autoPause": {
+                    "enabled"       : "[parameters('Synapse_SP_AutoPause')[copyIndex('SynapseSPCopy')]]",
+                    "delayInMinutes": "[parameters('Synapse_SP_Delay')[copyIndex('SynapseSPCopy')]]"
+                }
+            },
+            "copy": {
+                "name" : "SynapseSPCopy",
+                "count": "[length(parameters('Synapse_SP_Name'))]",
+                "mode" : "Serial"
+            }
+        }
+    ]
+}

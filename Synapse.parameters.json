@@ -1,0 +1,58 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "Synapse_WS_Name": {
+            "value": "whoaksws"
+        },
+        "SQL_Pool_Name": {
+            "value": ["sqlpool1", "sqlpool2"]
+        },
+        "SQL_Pool_Tags": {
+            "value": {
+                "Env": "Testing"
+            }
+        },
+        "SQL_Pool_SKU_Name": {
+            "value": ["DW100c", "DW100c"]
+        },
+        "SQL_Pool_Creation_Mode": {
+            "value": ["Default", "Default"]
+        },
+        "SQL_Pool_Collation": {
+            "value": ["SQL_Latin1_General_CP1_CI_AS", "SQL_Latin1_General_CP1_CI_AS"]
+        },
+        "Synapse_SP_Name": {
+            "value": ["sparkpool1"]
+        },
+        "Synapse_SP_Tags": {
+            "value": {
+                "Env": "Testing"
+            }
+        },
+        "Synapse_SP_Node_Size": {
+            "value": ["Small"]
+        },
+        "Synapse_SP_Node_Size_Family": {
+            "value": ["MemoryOptimized"]
+        },
+        "Synapse_SP_Version": {
+            "value": ["2.4"]
+        },
+        "Synapse_SP_AutoScale": {
+            "value": [true]
+        },
+        "Synapse_SP_Min_Node": {
+            "value": [3]
+        },
+        "Synapse_SP_Max_Node": {
+            "value": [10]
+        },
+        "Synapse_SP_AutoPause": {
+            "value": [true]
+        },
+        "Synapse_SP_Delay": {
+            "value": [15]
+        }
+    }
+}
