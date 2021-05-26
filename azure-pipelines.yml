@@ -19,6 +19,7 @@ steps:
     resourceGroupName             : 'Aks-RG'
     location                      : 'East US'
     templateLocation              : 'URL of the file'
-    csmFileLink                   : ''
+    csmFileLink                   : 'https://raw.githubusercontent.com/whoaks/AzurePipeline-Synapse/main/Synapse.json'
+    csmParametersFileLink         : 'https://raw.githubusercontent.com/whoaks/AzurePipeline-Synapse/main/Synapse.parameters.json'
     deploymentMode                : 'Incremental'
     deploymentName                : 'deployment'
