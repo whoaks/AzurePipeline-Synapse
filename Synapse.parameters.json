@@ -23,7 +23,7 @@
             "value": ["SQL_Latin1_General_CP1_CI_AS", "SQL_Latin1_General_CP1_CI_AS"]
         },
         "Synapse_SP_Name": {
-            "value": ["sparkpool1"]
+            "value": ["sparkpool"]
         },
         "Synapse_SP_Tags": {
             "value": {
